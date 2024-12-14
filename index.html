@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasan Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #383b3f, #2a5298);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(30, 56, 114, 0.8);
+            color: white;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header nav ul li:hover a {
+            color: #ffd700;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 10%;
+            background: linear-gradient(to bottom right, rgba(30, 56, 114, 0.9), rgba(42, 82, 152, 0.7)), url('https://source.unsplash.com/1600x900/?education,books');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            animation: fadeIn 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(30, 56, 114, 0.7), rgba(42, 82, 152, 0.8));
+            z-index: 1;
+        }
+
+        .hero h2,
+        .hero p,
+        .hero button {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 2s ease;
+        }
+
+        .hero button {
+            padding: 10px 25px;
+            font-size: 1rem;
+            color: #1e3c72;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+            animation: fadeInUp 2.5s ease;
+        }
+
+        .hero button:hover {
+            background-color: #ffd700;
+            color: #1e3c72;
+            transform: scale(1.1);
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 60px 10%;
+            background: #243b55;
+        }
+
+        .feature {
+            flex: 1 1 calc(33.333% - 40px);
+            background: linear-gradient(135deg, #1e88e5, #43a047);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .courses {
+            padding: 60px 10%;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+
+        .courses h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .course-card {
+            display: inline-block;
+            width: calc(30% - 20px);
+            margin: 15px;
+            background: white;
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+
+        .course-card h3 {
+            background: #43a047;
+            color: white;
+            padding: 15px;
+            font-size: 1.5rem;
+        }
+
+        .course-card p {
+            padding: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .video-section {
+            padding: 60px 10%;
+            text-align: center;
+            background: linear-gradient(to bottom, #2a5298, #1e3c72);
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .whatsapp-section {
+            padding: 60px 10%;
+            background: #243b55;
+            text-align: center;
+            color: white;
+        }
+
+        .whatsapp-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .whatsapp-group {
+            margin: 15px 0;
+            padding: 20px;
+            background: white;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-group:hover {
+            transform: scale(1.05);
+        }
+
+        .whatsapp-group h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #1e88e5;
+        }
+
+        .whatsapp-group p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .whatsapp-group a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .whatsapp-group a:hover {
+            background: #1ebe57;
+        }
+
+        .footer {
+            background: #243b55;
+            color: white;
+            text-align: center;
+            padding: 30px 10%;
+            font-size: 1rem;
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hasan Academy</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Master Your SSC and HSC Exams with Hasan Academy</h2>
+        <p>Comprehensive Online Coaching for Class 9, 10, and HSC Students</p>
+        <button onclick="window.location.href='tel:+8801755133930'">Join the New Batch Now</button>
+    </section>
+
+    <section id="features" class="features">
+        <div class="feature">
+            <h3>Weekly & Monthly Tests</h3>
+            <p>Evaluate your progress with structured tests and detailed feedback.</p>
+        </div>
+        <div class="feature">
+            <h3>Daily Progress Reports</h3>
+            <p>Track your performance daily and stay ahead of the curve.</p>
+        </div>
+        <div class="feature">
+            <h3>Live Support</h3>
+            <p>8 Hours of live problem-solving sessions to clear your doubts in real-time.</p>
+        </div>
+        <div class="feature">
+            <h3>Daily Notes</h3>
+            <p>Get well-structured PDF notes for every class, every day.</p>
+        </div>
+        <div class="feature">
+            <h3>Weekly Classes</h3>
+            <p>Three interactive sessions weekly to master concepts effectively.</p>
+        </div>
+        <div class="feature">
+            <h3>4-Month Duration</h3>
+            <p>Complete your preparation with a well-organized 4-month course timeline.</p>
+        </div>
+    </section>
+
+    <section id="courses" class="courses">
+        <h2>Our Courses</h2>
+        <div class="course-card">
+            <h3>Class 9 English, ICT, and Biology</h3>
+            <p>Comprehensive preparation with weekly tests, daily notes, and live support.</p>
+        </div>
+        <div class="course-card">
+            <h3>Class 10 English, ICT, and Biology</h3>
+            <p>Focused classes with progress tracking and exam-oriented strategies.</p>
+        </div>
+        <div class="course-card">
+            <h3>HSC English, ICT, and Biology</h3>
+            <p>Advanced level coaching with in-depth concept clarity and regular tests.</p>
+        </div>
+        <div class="course-card">
+            <h3>SSC and HSC On-Demand Courses</h3>
+            <p>Customized courses for specific topics or crash courses for last-minute preparation.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <h2>Our Pricing</h2>
+        <div class="pricing">
+            <div class="pricing-plan">
+                <h3>Full Payment</h3>
+                <p><strong>Price:</strong> 4300 BDT</p>
+                <p>Save 500 BDT by paying in full for the course.</p>
+            </div>
+            <div class="pricing-plan">
+                <h3>Monthly Payment</h3>
+                <p><strong>Price:</strong> 1200 BDT/month</p>
+                <p>Pay conveniently every month over 4 months.</p>
+            </div>
+        </div>
+        <style>
+            .pricing-section {
+                padding: 60px 10%;
+                background: #2a5298;
+                text-align: center;
+                color: white;
+            }
+
+            .pricing {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .pricing-plan {
+                background: white;
+                color: #333;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                text-align: center;
+                width: 300px;
+                transition: transform 0.3s;
+            }
+
+            .pricing-plan:hover {
+                transform: scale(1.05);
+            }
+
+            .pricing-plan h3 {
+                background: #43a047;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .pricing-plan p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+        </style>
+    </section>
+
+    <section id="video" class="video-section">
+        <h2>Watch Our Demo Class</h2>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="whatsapp" class="whatsapp-section">
+        <h2>Join Your Class WhatsApp Group</h2>
+        <div class="whatsapp-group">
+            <h3>Class 9 Group</h3>
+            <p>Connect with fellow Class 9 students and access updates.</p>
+            <a href="https://chat.whatsapp.com/your-group-link" target="_blank">Join WhatsApp Group</a>
+        </div>
+        <div class="whatsapp-group">
+            <h3>Class 10 Group</h3>
+            <p>Stay informed about Class 10 schedules and announcements.</p>
+            <a href="https://chat.whatsapp.com/your-group-link" target="_blank">Join WhatsApp Group</a>
+        </div>
+        <div class="whatsapp-group">
+            <h3>HSC Group</h3>
+            <p>Engage with HSC peers and keep track of important updates.</p>
+            <a href="https://chat.whatsapp.com/your-group-link" target="_blank">Join WhatsApp Group</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <!-- <p>Email: <a href="mailto:info@hasanacademy.com">info@hasanacademy.com</a></p> -->
+        <p>Phone: <a href="tel:+880123456789">+8801755133930</a></p>
+        <p>Address: Dhanmondi, Dhaka, Bangladesh</p>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 Hasan Academy. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+
+</html>
